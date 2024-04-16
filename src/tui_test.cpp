@@ -13,11 +13,10 @@ int main(int argc, char const *argv[])
 
     //Crea la pantalla
     auto screen=Screen::Create
-    {
+    (
         Dimension::Full(),
         Dimension::Fit(container)
-
-    };
+    );
     Render (screen,container);
     screen.Print();
     /* code */
