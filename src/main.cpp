@@ -25,8 +25,8 @@ int main(int argc, char const *argv[])
         Element lienzo = hbox({personaje,tanque, dAlien.GetElement()});
         
         Screen pantalla = Screen :: Create(
-        Dimension::Full(), 
-        Dimension::Full());
+            Dimension::Full(), 
+            Dimension::Full());
 
         Render(pantalla,lienzo);
         pantalla.Print();
