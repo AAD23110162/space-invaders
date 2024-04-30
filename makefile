@@ -7,6 +7,9 @@ bin/space : src/main.cpp
 bin/ventana : src/ventana.cpp
 	g++ src/ventana.cpp -o bin/ventana -std=c++2a -lftxui-screen -lftxui-component -lftxui-dom -Iinclude       
 
+bin/otraP : src/OtraPalabra.cpp
+	g++ src/OtraPalabra.cpp -o bin/otraP -std=c++2a -lftxui-screen -lftxui-component -lftxui-dom -Iinclude
+
 run : bin/space
 	./bin/space
 
@@ -15,6 +18,9 @@ runTest : bin/test
 
 runVentana : bin/ventana
 	./bin/ventana
+
+runOtraP : bin/otraP
+	./bin/otraP
 
 hola :
 	echo Hola mundo
