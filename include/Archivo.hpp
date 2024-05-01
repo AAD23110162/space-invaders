@@ -1,5 +1,8 @@
+#pragma once
 #include <fstream>
-#include <ftxui/dom/elements.hpp>
+#include <string>
+#include <list>
+#include <Dibujo.hpp>
 
 using namespace std;
 using namespace ftxui;
@@ -8,26 +11,25 @@ class Archivo
 {
 private:
     fstream archivo;
-    Element contenido;
+    list<string> contenido;
 public:
     Archivo(string path)
     {
         archivo.open(path);
-        
-        Elements lineas;
+
         while(!archivo.eof())
         {
             string linea;
             getline(archivo,linea);
-            lineas.emplace_back(text(linea));
-        }
-        this->contenido =vbox(lineas);   
+            contenido.push_back(linea);
+        }  
         archivo.close();
     }
 
-    Element GetElement()
+    Dibujo CrearDibujo()
     {
-        return this->contenido;
+        Dibujo temp(contenido,0,0);
+        return temp;
     }
     ~Archivo(){}
 };

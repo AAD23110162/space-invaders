@@ -9,7 +9,7 @@ class Dibujo
 private:
     int posicionX;
     int posicionY;
-    string palabra;
+    list<string> contenido;
 
 public:
     Dibujo()
@@ -22,24 +22,42 @@ public:
         this->posicionX=posicionX;
         this->posicionY=posicionY;
     }
-    Dibujo(string palabra, int posicionX, int posicionY)
+    Dibujo(list<string> contenido, int posicionX, int posicionY)
     {
-        this->palabra=palabra;
+        this->contenido=contenido;
         this->posicionX=posicionX;
         this->posicionY=posicionY;
     }
     void Dibujar(ftxui::Screen &Pantalla)
     {
-        int posicionPalabraX=0;
+        
         int posicionPalabraY=0;
         
-        for (auto &&letra : palabra)
+        for (auto &&linea : contenido)
         {
-            int posicionFinalX=this->posicionX+posicionPalabraX;
-            int posicionFinalY=this->posicionY+posicionPalabraY;
-            Pantalla.PixelAt(posicionFinalX, posicionFinalY).character = letra;
-            posicionPalabraX++;
+            int posicionPalabraX=0;
+            for (auto &&letra : contenido)
+            {
+                int posicionFinalX=this->posicionX+posicionPalabraX;
+                int posicionFinalY=this->posicionY+posicionPalabraY;
+                Pantalla.PixelAt(posicionFinalX, posicionFinalY).character = letra;
+                posicionPalabraX++;
+            }
+            posicionPalabraY++; 
         }
+    }
+    void DesplazarX(int distancia)
+    {
+        posicionX += distancia;
+    }
+    void Desplazary(int distancia)
+    {
+        posicionY += distancia;
+    }
+    void EstablecerPosion(int x, int y)
+    {
+        this->posicionX=x;
+        this->posicionY=y;
     }
     ~Dibujo(){}
 };

@@ -3,6 +3,8 @@
         "iosfwd": "cpp",
         "cstddef": "cpp",
         "fstream": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "iostream": "cpp",
+        "random": "cpp"
     }
 }
